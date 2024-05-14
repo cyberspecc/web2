@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(117, 67, 48);
+    font-family:'Brush Script MT', cursive;
+    color:#abffff;
+}
+.bar-logo {
+    background: url(../image/logo.avif) no-repeat center center;
+    background-size: 100%;
+    width: 100px;
+    height: 100px;
+}
+.my-photo {
+    background: url(../image/image.avif) no-repeat center center;
+    background-size: 62%;
+    width: 394px;
+    height: 312px;
+}
+.bar-text {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.container {
+    margin-top: 30px;
+}
+.title-photo {
+    text-align: center;
+    font-size: 24px;
+}
