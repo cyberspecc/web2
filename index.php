@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <div class="container">
+        <div class="col-12 index">
+            <h1>Login!</h1>
     <?php
     if (!isset($_COOKIE['User'])) {
         ?>
@@ -21,5 +24,7 @@
         //some code
     }
     ?>
+        </div>
+    </div>
 </body>
 </html>
