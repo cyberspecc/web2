@@ -29,7 +29,7 @@ body {
     text-align: center;
     font-size: 24px;
 }
-#myButton {
+.button {
     border: none;
     width: 150px;
     height: 50px;
@@ -52,4 +52,23 @@ body {
 }
 .index {
     text-align: center;
+}
+
+a {
+    font-size: 35px;
+}
+.form_width {
+    width: 100%;
+}
+.form_align {
+    text-align: center;
+}
+.form_reg {
+    margin: auto;
+    padding-top: 10px;
+    width: 40%;
+}
+
+.padding_10 {
+    padding-bottom: 10px;
 }

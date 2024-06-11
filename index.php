@@ -12,16 +12,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="col-12 index">
-            <h1>Login!</h1>
     <?php
     if (!isset($_COOKIE['User'])) {
         ?>
+        <div class="container">
+            <div class="col-12 index">
+                <h1>Login!</h1>
         <a href="/registration.php"> Registr please</a> or <a href="/login.php">log in.</a>
         <?php
     } else {
-        //some code
+        ?>
+        <div class="container">
+            <div class="col-12 index">
+                <h1>Posts!</h1>
+        <?php
+        $link = mysqli_connect("127.0.0.1","root","root","web2");
+        $sql = "select * from posts";
+        $res = mysqli_query($link, $sql);
+        if( mysqli_num_rows($res) > 0) {
+            while($post = mysqli_fetch_array($res)) {
+                echo "<a href='/posts.php?id=" . $post["id"] . "'>" . $post["title"] . "</a><br>";
+            }
+        }
+            
     }
     ?>
         </div>

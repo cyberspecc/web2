@@ -14,17 +14,17 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 form_align">
                 <h1>Registration!</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <form action="registration.php" method="POST">
+                <form class="form_align" action="registration.php" method="POST">
                     <div class="row form_reg"><input type="email" class="form" name="email" placeholder="Email"></div>
                     <div class="row form_reg"><input type="text" class="form" name="login" placeholder="Login"></div>
-                    <div class="row form_reg"><input type="password" class="form" name="password" placeholder="Password"></div>
-                    <button type="submit" class="btn_reg" name="submit">Register</button>
+                    <div class="row form_reg padding_10"><input type="password" class="form" name="password" placeholder="Password"></div>
+                    <button type="submit" class="btn_reg button" name="submit">Register</button>
                 </form>
             </div>
         </div>

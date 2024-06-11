@@ -1,3 +1,8 @@
+<?php
+    if (!isset($_COOKIE['User'])){
+        header('Location: /');
+    }
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -16,7 +21,7 @@
         <div class="row">
             <div class="col-3 bar-logo"></div>
             <div class="col-9 bar-text">
-                My information!
+                Hello, <?php echo $_COOKIE['User']; ?>!
             </div>
         </div>
     </div>
@@ -39,8 +44,20 @@
     <div class="container">
         <div class="row">
             <div class="button_js col-12">
-                <button id="myButton">Click me</button>
+                <button class="button" id="myButton">Click me</button>
                 <p id="demo"></p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form class="form_align" action="profile.php" method="POST" enctype="multipart/form-data">
+                    <input type="text" class="form form_width" name="title" placeholder="Titlt of the post"><br>
+                    <textarea name="text" class="form_width" cols="30" rows="10" placeholder="Post text"></textarea><br>
+                    <input type="file" name="file" class="padding_10" /><br>
+                    <button type="submit" class="button" name="submit" >Save post!</button>
+                </form>
             </div>
         </div>
     </div>
@@ -49,3 +66,31 @@
 
 
 </html>
+
+<?php
+$link = mysqli_connect("127.0.0.1","root","root","web2");
+if (isset($_POST['submit'])){
+    $title = $_POST['title'];
+    $text = $_POST['text'];
+    if (!$title || !$text) die ("Enter all data!");
+    $sql = "insert into posts (title, main_text) values ('$title', '$text')";
+    if(!mysqli_query($link, $sql)) die ("Error via adding post!");
+
+    if(!empty($_FILES["file"]))
+    {
+        if (((@$_FILES["file"]["type"] == "image/gif") || (@$_FILES["file"]["type"] == "image/jpeg") || (@$_FILES["file"]["type"] == "image/jpg") 
+        || (@$_FILES["file"]["type"] == "image/pjpeg") || (@$_FILES["file"]["type"] == "image/x-png") || (@$_FILES["file"]["type"] == "image/png")) &&
+        (@$_FILES["file"]["size"] < 102400))
+        {
+            move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/" . $_FILES["file"]["name"]);
+            echo "Load in: uploads/" . $_FILES["file"]["name"];
+        }
+        else {
+            echo "Upload failed!";
+        }
+    }
+    else {
+        echo "Nothing to upload";
+    }
+
+}
